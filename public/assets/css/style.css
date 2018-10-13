@@ -2,6 +2,10 @@ label {
 	font-weight: bold;
 }
 
+h1{
+	text-align: center;
+}
+
 .table-header{
 	font-weight: bold;
 }
