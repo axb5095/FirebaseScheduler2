@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Train Scheduler</title>
+
+	<!--Bootstrap CDN link-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	 crossorigin="anonymous">
+
+	<!--Bootswatch link-->
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/spacelab/bootstrap.min.css">
+
+	<!--Reset css file-->
+	<!--<link rel="stylesheet" type="text/css" href="assets/css/reset.css">-->
+
+	<!--Google Fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+	<!--External css file-->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="jumbotron">
+					<h1>
+						Catch the train!
+					</h1>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h3> Current train time</h3>
+					</div>
+
+
+					<div class="card-body">
+						<span> Current time : </span>
+						<table class="table-hover table">
+							<thead>
+								<tr>
+									<th>Train Name</th>
+									<th>Destination</th>
+									<th> Frequency (in minutes)</th>
+									<th>Next Arrival</th>
+									<th> Minutes away</th>
+
+
+								</tr>
+
+
+
+
+							</thead>
+							<tbody>
+
+							</tbody>
+
+
+
+						</table>
+
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h3>add train </h3>
+
+
+
+					</div>
+
+
+					<div class="card-body">
+						<form>
+							<div class="form-group">
+								<label for="train-name"> Train Name </label>
+								<input type="text" id="train-name" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="destination">Destination </label>
+								<input type="text" id="destination" class="form-control">
+							</div>
+
+
+							<div class="form-group">
+								<label for="first-train-time"> First train time </label>
+								<input type="text" id="first-train-time" class="form-control">
+							</div>
+
+
+
+							<div class="form-group">
+								<label for="Frequency"> Frequency</label>
+								<input type="text" id="frequency" class="form-control"> </div>
+							<button type="submit" class="btn-primary btn" id="add-train">Add train</button>
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+		<!--JQuery link-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!--Font Awesome link-->
+		<script src="https://use.fontawesome.com/abd289e58f.js"></script>
+
+		<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+
+
+		<!--Add Moment JS-->
+		<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+		<!--Bootstrap Javascript links (required for modals to work)-->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		 crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		 crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+		 crossorigin="anonymous"></script>
+
+		<!--Firebase UI JS and CSS for authentication-->
+		<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+		<!--Link to my javascript file-->
+		<script src="assets/javascript/app.js"></script>
+
+</body>
+
+</html>
