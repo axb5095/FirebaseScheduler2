@@ -7,20 +7,30 @@ var config = {
 	storageBucket: "fir-train-scheduler-62912.appspot.com",
 	messagingSenderId: "248917561607"
 };
+
+
 firebase.initializeApp(config);
 
-// Connect to the Firebase database
+var json = {}
 var database = firebase.database();
 
 function displayCurrentTime() {
-setInterval(function(){
-    $('#current-time').html(moment().format('hh:mm A'))
-  }, 1000);
+	setInterval (changeTimeDisplay, 1000);
 }
 displayCurrentTime();
 
 
+function changeTimeDisplay(){
+    $('#current-time').html(moment().format('hh:mm A'))
+  }
 
+  function getData() {
+	json.train_name = $("#train-name").val().trim();
+	json.destination = $("#destination").val().trim();
+	json.first_train_time = $("#first-train-time").val().trim();
+	json.Frequency =  $("#frequency").val().trim();
+	return json;
+}
 //CDelete Schedule...
  $("body").on("click", ".trash-can", function(){
 	// Prevent form from submitting
@@ -44,6 +54,11 @@ displayCurrentTime();
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+ function hasEmptyValues(trainName,destination,Frequency,TrainTime) {
+	return trainName === "" || destination === "" || TrainTime === "" || Frequency === ""|| 
+	trainName === null || destination === null || TrainTime === null || Frequency === null
+ }
+	
 
 $("#add-train").on("click", function() {
 	// Prevent form from submitting
@@ -55,19 +70,43 @@ $("#add-train").on("click", function() {
 	var TrainTime = $("#first-train-time").val().trim();
 	var Frequency = $("#frequency").val().trim();
 
-	console.log(trainName, destination, TrainTime, Frequency)
+	var trainData  = {
+	 trainName : function() {
+		 return  $("#train-name").val().trim();
+	 },
+	 destination : function() {
+		return  $("#destination").val().trim();
+	},
+	TrainTime: function() {
+		return  $("#first-train-time").val().trim();
+	},
+	Frequency : function() {
+		return  $("#frequency").val().trim();
+	}
+	}
+
+	 
+	
+//Validate the values 
+if (json.train_name === "" || json.destination === "" || json.first_train_time === "" || json.frequency === ""|| 
+json.train_name === null || json.destination === null || json.first_train_time === null || json.frequency === null){
+	$("#not-military-time").empty();
+	$("#not-a-number").empty();
+	$("#missing-field").html("Please enter all the fields to schedule the train.");
+	return false;		
+}
+	console.log(trainData.trainName, destination, TrainTime, Frequency);
+
+	//Get the values fom the text boxes
+	
+
+	//console.log(json.train-name, json.destination, json.first-train-time, json.frequency);
+
 
 
 
 	//Validate the values 
-	if (trainName === "" || destination === "" || TrainTime === "" || Frequency === ""|| 
-		   trainName === null || destination === null || TrainTime === null || Frequency === null){
-		$("#not-military-time").empty();
-	    $("#not-a-number").empty();
-		$("#missing-field").html("Please enter all the fields to schedule the train.");
-		return false;		
-	}
-
+	
 	//Check for  military time.
 	if (TrainTime.length !== 5 || TrainTime.substring(2,3)!== ":") {
 		$("#missing-field").empty();
@@ -75,7 +114,7 @@ $("#add-train").on("click", function() {
 		$("#not-military-time").html("Enter Time  in military format: HH:mm. For example, 15:00.");
 		return false;
 	}
-
+//
 	//Check Frequency value.
 	if (isNaN(Frequency)) {
     	$("#missing-field").empty();
